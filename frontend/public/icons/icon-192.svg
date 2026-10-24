@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d90429;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b8001f;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="36" fill="url(#grad)" />
+  <!-- Wheel Rim & Tyre Icon -->
+  <circle cx="96" cy="96" r="64" fill="none" stroke="#ffffff" stroke-width="12" />
+  <circle cx="96" cy="96" r="38" fill="none" stroke="#ffb703" stroke-width="8" />
+  <circle cx="96" cy="96" r="14" fill="#ffffff" />
+  <!-- Spokes -->
+  <line x1="96" y1="32" x2="96" y2="160" stroke="#ffffff" stroke-width="6" />
+  <line x1="32" y1="96" x2="160" y2="96" stroke="#ffffff" stroke-width="6" />
+  <line x1="51" y1="51" x2="141" y2="141" stroke="#ffffff" stroke-width="6" />
+  <line x1="51" y1="141" x2="141" y2="51" stroke="#ffffff" stroke-width="6" />
+</svg>

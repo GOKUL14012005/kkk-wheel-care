@@ -1,0 +1,294 @@
+:root {
+  --brand-primary: #d90429;
+  --brand-primary-dark: #b8001f;
+  --brand-accent: #ef233c;
+  --brand-dark: #1b1d20;
+  --brand-darker: #111215;
+  --brand-secondary: #2b2d42;
+  --brand-muted: #6c757d;
+  --brand-light: #f8f9fa;
+  --brand-surface: #ffffff;
+  --brand-border: #e9ecef;
+  --brand-success: #198754;
+  --brand-warning: #ffb703;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.12);
+  --transition-fast: all 0.25s ease;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #2b2d42;
+  background-color: #fdfdfd;
+  overflow-x: hidden;
+}
+
+/* Academic Banner */
+.academic-badge-bar {
+  background: #111215;
+  color: #edf2f4;
+  font-size: 0.825rem;
+  padding: 6px 0;
+  border-bottom: 2px solid var(--brand-primary);
+}
+
+.academic-badge-bar a {
+  color: #ffb703;
+  text-decoration: none;
+}
+
+.academic-badge-bar a:hover {
+  text-decoration: underline;
+}
+
+/* Navbar */
+.navbar-brand-kkk {
+  font-weight: 800;
+  font-size: 1.45rem;
+  letter-spacing: -0.5px;
+  color: var(--brand-darker) !important;
+}
+
+.navbar-brand-kkk span {
+  color: var(--brand-primary);
+}
+
+.nav-link {
+  font-weight: 500;
+  color: #33383f !important;
+  padding: 0.5rem 0.9rem !important;
+  transition: var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--brand-primary) !important;
+}
+
+.btn-brand {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1.25rem;
+  transition: var(--transition-fast);
+}
+
+.btn-brand:hover {
+  background-color: var(--brand-primary-dark);
+  border-color: var(--brand-primary-dark);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(217, 4, 41, 0.25);
+}
+
+.btn-outline-brand {
+  color: var(--brand-primary);
+  border: 2px solid var(--brand-primary);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 1.2rem;
+  transition: var(--transition-fast);
+}
+
+.btn-outline-brand:hover {
+  background-color: var(--brand-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, rgba(27, 29, 32, 0.95), rgba(43, 45, 66, 0.9)),
+              url('https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  color: #ffffff;
+  padding: 5rem 0 4.5rem;
+  position: relative;
+}
+
+.hero-title {
+  font-size: 2.85rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #e0e6ed;
+  font-weight: 400;
+}
+
+.hero-tag {
+  display: inline-block;
+  background: rgba(217, 4, 41, 0.2);
+  border: 1px solid var(--brand-accent);
+  color: #ffb703;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Feature Cards */
+.feature-card {
+  border: 1px solid var(--brand-border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  background: #ffffff;
+  transition: var(--transition-fast);
+  height: 100%;
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(217, 4, 41, 0.3);
+}
+
+.feature-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
+  background: rgba(217, 4, 41, 0.1);
+  color: var(--brand-primary);
+}
+
+/* Product & Service Cards */
+.card-service {
+  border: none;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+  background: #ffffff;
+}
+
+.card-service:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-service .service-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  font-size: 0.75rem;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.card-service img {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card-service:hover img {
+  transform: scale(1.05);
+}
+
+/* jQuery Highlight / Traversal Demo styling */
+.jq-highlight-target {
+  outline: 3px dashed #d90429 !important;
+  background-color: rgba(217, 4, 41, 0.08) !important;
+  transition: all 0.3s ease;
+}
+
+.jq-highlight-parent {
+  outline: 3px solid #ffb703 !important;
+  background-color: rgba(255, 183, 3, 0.1) !important;
+  transition: all 0.3s ease;
+}
+
+.jq-highlight-sibling {
+  outline: 3px dotted #0d6efd !important;
+  background-color: rgba(13, 110, 253, 0.08) !important;
+  transition: all 0.3s ease;
+}
+
+.console-terminal {
+  background-color: #121418;
+  color: #38b000;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  max-height: 260px;
+  overflow-y: auto;
+  border: 1px solid #2b2d42;
+}
+
+/* Form Cards */
+.auth-card {
+  border: 1px solid var(--brand-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  background: #ffffff;
+  padding: 2.5rem;
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--brand-secondary);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 0.25rem rgba(217, 4, 41, 0.15);
+}
+
+/* Password strength bar */
+.password-strength-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: #e9ecef;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.password-strength-bar-fill {
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* Footer */
+footer.kkk-footer {
+  background-color: var(--brand-darker);
+  color: #adb5bd;
+  padding: 4rem 0 2rem;
+  font-size: 0.925rem;
+}
+
+footer.kkk-footer h5 {
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+footer.kkk-footer a {
+  color: #adb5bd;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+footer.kkk-footer a:hover {
+  color: #ffb703;
+  padding-left: 4px;
+}

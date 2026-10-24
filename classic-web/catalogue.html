@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product & Tyre Catalogue | KKK Wheel Care</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom Modern CSS3 -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <!-- Academic Bar -->
+  <div class="academic-badge-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div>
+        <span class="badge bg-danger me-1">REQUIREMENT 4</span>
+        <strong>jQuery Dynamic Product Filtering & Live Estimate Tray</strong>
+      </div>
+      <div>
+        <a href="jquery-demo.html" class="text-warning text-decoration-none fw-semibold">
+          <i class="bi bi-cpu-fill me-1"></i>Open Dedicated jQuery Traversal Lab
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary Navigation -->
+  <header class="bg-white border-bottom shadow-sm sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light py-2">
+      <div class="container">
+        <a class="navbar-brand navbar-brand-kkk d-flex align-items-center gap-2" href="index.html">
+          <i class="bi bi-shield-shaded text-danger fs-2"></i>
+          <span>KKK</span> WHEEL CARE
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCat">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navCat">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center gap-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link active fw-bold text-danger" href="catalogue.html">Catalogue</a></li>
+            <li class="nav-item"><a class="nav-link" href="booking.html">Book Service</a></li>
+            <li class="nav-item"><a class="nav-link" href="jquery-demo.html">jQuery Lab</a></li>
+            <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+            <li class="nav-item">
+              <a href="payment.html" class="btn btn-outline-brand btn-sm position-relative">
+                <i class="bi bi-cart3 me-1"></i>Estimate Tray
+                <span id="estimateBadgeCount" class="badge rounded-pill bg-danger ms-1">0</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container py-4">
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+      <div>
+        <h2 class="fw-bold mb-1">Automotive & Allied Products Catalogue</h2>
+        <p class="text-muted mb-0">Browse certified tyres, automotive batteries, solar thermal heaters, and RO water purification units.</p>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small">Showing:</span>
+        <span class="badge bg-dark fs-6" id="activeProductCount">10</span>
+        <span class="text-muted small">Items</span>
+      </div>
+    </div>
+
+    <!-- Filter Buttons Bar (jQuery manipulated) -->
+    <div class="card border-0 shadow-sm rounded-4 p-3 mb-4 bg-white">
+      <div class="row align-items-center g-3">
+        <div class="col-lg-8">
+          <div class="d-flex flex-wrap gap-2" id="categoryFilterGroup">
+            <button class="btn btn-brand btn-sm filter-btn active" data-category="all">
+              <i class="bi bi-grid-fill me-1"></i>All Products
+            </button>
+            <button class="btn btn-outline-secondary btn-sm filter-btn" data-category="tyres">
+              <i class="bi bi-disc me-1"></i>Tyres (Car & SUV)
+            </button>
+            <button class="btn btn-outline-secondary btn-sm filter-btn" data-category="batteries">
+              <i class="bi bi-battery-charging me-1"></i>Batteries
+            </button>
+            <button class="btn btn-outline-secondary btn-sm filter-btn" data-category="services">
+              <i class="bi bi-wrench me-1"></i>Wheel Care Services
+            </button>
+            <button class="btn btn-outline-secondary btn-sm filter-btn" data-category="solar">
+              <i class="bi bi-sun-fill me-1"></i>Solar Heaters
+            </button>
+            <button class="btn btn-outline-secondary btn-sm filter-btn" data-category="purifiers">
+              <i class="bi bi-droplet-half me-1"></i>Water Purifiers
+            </button>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2">
+            <label for="priceRangeInput" class="form-label mb-0 small text-nowrap fw-bold">Max Price:</label>
+            <input type="range" class="form-range" id="priceRangeInput" min="500" max="45000" step="500" value="45000">
+            <span class="badge bg-danger font-monospace text-nowrap" id="priceDisplay">₹45,000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Products Column -->
+      <div class="col-lg-8 col-xl-9">
+        <div class="row g-4" id="productGrid">
+
+          <!-- 1. Bridgestone Turanza -->
+          <div class="col-md-6 col-xl-4 product-item" data-category="tyres" data-price="5800" data-vehicle="sedan" data-terrain="city">
+            <div class="card h-100 card-service">
+              <span class="service-badge bg-danger text-white">Top Seller</span>
+              <img src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Bridgestone Turanza">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-2">
+                  <span class="badge bg-primary-subtle text-primary border border-primary">Bridgestone</span>
+                  <span class="badge bg-secondary-subtle text-secondary">195/65 R15</span>
+                </div>
+                <h5 class="fw-bold product-title mb-1">Bridgestone Turanza T005</h5>
+                <p class="text-muted small flex-grow-1">Ultra-silent highway comfort, outstanding wet braking, high durability silica compound.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                  <span class="fs-5 fw-bold text-danger product-price">₹5,800</span>
+                  <button class="btn btn-outline-dark btn-sm btn-add-service">
+                    <i class="bi bi-plus-lg me-1"></i>Add Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Michelin Primacy -->
+          <div class="col-md-6 col-xl-4 product-item" data-category="tyres" data-price="7400" data-vehicle="sedan" data-terrain="city">
+            <div class="card h-100 card-service">
+              <span class="service-badge bg-warning text-dark">Premium</span>
+              <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Michelin Primacy">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-2">
+                  <span class="badge bg-primary-subtle text-primary border border-primary">Michelin</span>
+                  <span class="badge bg-secondary-subtle text-secondary">205/55 R16</span>
+                </div>
+                <h5 class="fw-bold product-title mb-1">Michelin Primacy 4 ST</h5>
+                <p class="text-muted small flex-grow-1">Acoustic dampening ribbing, class-leading wet safety even when worn down.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                  <span class="fs-5 fw-bold text-danger product-price">₹7,400</span>
+                  <button class="btn btn-outline-dark btn-sm btn-add-service">
+                    <i class="bi bi-plus-lg me-1"></i>Add Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Apollo Apterra AT2 -->
+          <div class="col-md-6 col-xl-4 product-item" data-category="tyres" data-price="6900" data-vehicle="suv" data-terrain="all-terrain">
+            <div class="card h-100 card-service">
+              <span class="service-badge bg-dark text-white">All-Terrain</span>
+              <img src="https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Apollo Apterra">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-2">
+                  <span class="badge bg-primary-subtle text-primary border border-primary">Apollo</span>
+                  <span class="badge bg-secondary-subtle text-secondary">215/65 R16</span>
+                </div>
+                <h5 class="fw-bold product-title mb-1">Apollo Apterra AT2 (SUV)</h5>
+                <p class="text-muted small flex-grow-1">Aggressive tread block, herringbone grooves for slush and off-road traction.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                  <span class="fs-5 fw-bold text-danger product-price">₹6,900</span>
+                  <button class="btn btn-outline-dark btn-sm btn-add-service">
+                    <i class="bi bi-plus-lg me-1"></i>Add Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Amaron Pro Battery -->
+          <div class="col-md-6 col-xl-4 product-item" data-category="batteries" data-price="5200">
+            <div class="card h-100 card-service">
+              <span class="service-badge bg-success text-white">60M Warranty</span>
+              <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Amaron Pro Battery">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-2">
+                  <span class="badge bg-success-subtle text-success border border-success">Amaron Pro</span>
+                  <span class="badge bg-secondary-subtle text-secondary">45Ah DIN</span>
+                </div>
+                <h5 class="fw-bold product-title mb-1">Amaron PRO Hi-Life 45Ah</h5>
+                <p class="text-muted small flex-grow-1">Silven X alloy zero-maintenance automotive battery with high cranking amps.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                  <span class="fs-5 fw-bold text-danger product-price">₹5,200</span>
+                  <button class="btn btn-outline-dark btn-sm btn-add-service">
+                    <i class="bi bi-plus-lg me-1"></i>Add Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Exide Matrix Battery -->
+          <div class="col-md-6 col-xl-4 product-item" data-category="batteries" data-price="6100">
+            <div class="card h-100 card-service">
+              <span class="service-badge bg-danger text-white">55M Warranty</span>
+              <img src="https://images.unsplash.com/photo-1558441719-7d8eb99a0f44?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Exide Matrix">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-2">
+                  <span class="badge bg-danger-subtle text-danger border border-danger">Exide</span>
+                  <span class="badge bg-secondary-subtle text-secondary">55Ah Red</span>
+                </div>
+                <h5 class="fw-bold product-title mb-1">Exide Matrix MTRED55</h5>
+                <p class="text-muted small flex-grow-1">Heavy-duty heat tolerance, puncture-resistant separator, rapid charge recovery.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                  <span class="fs-5 fw-bold text-danger product-price">₹6,100</span>
+                  <button class="btn btn-outline-dark btn-sm btn-add-service">
+                    <i class="bi bi-plus-lg me-1"></i>Add Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. 3D Wheel Alignment Service -->
+          <div class="col-md-6 col-xl-4 product-item" data-category="services" data-price="650">
+            <div class="card h-100 card-service">
+              <span class="service-badge bg-info text-dark">Express</span>
+              <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Wheel Alignment">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-2">
+                  <span class="badge bg-info-subtle text-info border border-info">Workshop</span>
+                  <span class="badge bg-secondary-subtle text-secondary">30 Mins</span>
+                </div>
+                <h5 class="fw-bold product-title mb-1">Computerized 3D Alignment</h5>
+                <p class="text-muted small flex-grow-1">Digital multi-axis sensor calibration, prevents uneven tyre wear and steering drift.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                  <span class="fs-5 fw-bold text-danger product-price">₹650</span>
+                  <button class="btn btn-outline-dark btn-sm btn-add-service">
+                    <i class="bi bi-plus-lg me-1"></i>Add Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Dynamic Wheel Balancing & Weights -->
+          <div class="col-md-6 col-xl-4 product-item" data-category="services" data-price="550">
+            <div class="card h-100 card-service">
+              <span class="service-badge bg-info text-dark">Essential</span>
+              <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Wheel Balancing">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-2">
+                  <span class="badge bg-info-subtle text-info border border-info">Workshop</span>
+                  <span class="badge bg-secondary-subtle text-secondary">4 Wheels</span>
+                </div>
+                <h5 class="fw-bold product-title mb-1">High-Speed Wheel Balancing</h5>
+                <p class="text-muted small flex-grow-1">Removes high-speed vibrations, includes computerized zinc balance clip weights.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                  <span class="fs-5 fw-bold text-danger product-price">₹550</span>
+                  <button class="btn btn-outline-dark btn-sm btn-add-service">
+                    <i class="bi bi-plus-lg me-1"></i>Add Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. Solar Water Heater (ETC 200 LPD) -->
+          <div class="col-md-6 col-xl-4 product-item" data-category="solar" data-price="28500">
+            <div class="card h-100 card-service">
+              <span class="service-badge bg-warning text-dark">Green Energy</span>
+              <img src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Solar Water Heater">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-2">
+                  <span class="badge bg-warning-subtle text-warning border border-warning">KKK Green</span>
+                  <span class="badge bg-secondary-subtle text-secondary">200 LPD</span>
+                </div>
+                <h5 class="fw-bold product-title mb-1">Solar Thermal Water Heater</h5>
+                <p class="text-muted small flex-grow-1">Evacuated Tube Collector (ETC), food-grade stainless steel tank with PUF insulation.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                  <span class="fs-5 fw-bold text-danger product-price">₹28,500</span>
+                  <button class="btn btn-outline-dark btn-sm btn-add-service">
+                    <i class="bi bi-plus-lg me-1"></i>Add Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9. RO Water Purifier System -->
+          <div class="col-md-6 col-xl-4 product-item" data-category="purifiers" data-price="14800">
+            <div class="card h-100 card-service">
+              <span class="service-badge bg-primary text-white">Alkaline Pure</span>
+              <img src="https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Water Purifier">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-2">
+                  <span class="badge bg-primary-subtle text-primary border border-primary">PureAqua</span>
+                  <span class="badge bg-secondary-subtle text-secondary">RO + UV + UF</span>
+                </div>
+                <h5 class="fw-bold product-title mb-1">8-Stage RO Water Purifier</h5>
+                <p class="text-muted small flex-grow-1">Copper enrichment, active carbon deodorizer, TDS regulator up to 2000 ppm.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                  <span class="fs-5 fw-bold text-danger product-price">₹14,800</span>
+                  <button class="btn btn-outline-dark btn-sm btn-add-service">
+                    <i class="bi bi-plus-lg me-1"></i>Add Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Column: Live Estimate / Cart Drawer (jQuery DOM Insertion) -->
+      <div class="col-lg-4 col-xl-3">
+        <div class="card border-0 shadow-sm rounded-4 bg-white p-3 sticky-top" style="top: 85px;">
+          <h5 class="fw-bold mb-3 d-flex align-items-center justify-content-between">
+            <span><i class="bi bi-receipt-cutoff text-danger me-2"></i>Estimate Tray</span>
+            <small class="badge bg-danger">Live DOM</small>
+          </h5>
+
+          <div id="estimateEmptyNotice" class="text-center py-4 text-muted small">
+            <i class="bi bi-cart-x fs-1 d-block mb-2 text-secondary"></i>
+            Click <strong>"Add Quote"</strong> on any product or service to assemble a dynamic quotation.
+          </div>
+
+          <ul class="list-group list-group-flush mb-3" id="estimateList">
+            <!-- Dynamically populated via jQuery .append() -->
+          </ul>
+
+          <div id="estimateSummaryBlock" style="display: none;">
+            <div class="border-top pt-2 d-flex justify-content-between align-items-center mb-3">
+              <span class="fw-bold">Estimated Total:</span>
+              <span class="fs-5 fw-bold text-danger" id="estimateTotal">₹0</span>
+            </div>
+            <a href="payment.html" class="btn btn-brand w-100 py-2">
+              <i class="bi bi-credit-card-2-front me-1"></i>Proceed to Checkout
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-secondary py-3 text-center small mt-5">
+    <div class="container">
+      &copy; 2026 KKK Wheel Care. Product Catalogue with jQuery Dynamic DOM Manipulation.
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+    <div id="liveActionToast" class="toast align-items-center text-bg-dark border-0" role="alert">
+      <div class="d-flex">
+        <div class="toast-body" id="liveToastMsg">Action updated!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/jquery-interactions.js"></script>
+</body>
+</html>

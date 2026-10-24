@@ -1,0 +1,164 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      
+      <!-- Account Registration Header -->
+      <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
+        <div class="d-flex align-items-center gap-3">
+          <div class="rounded-circle bg-danger-subtle text-danger p-3 fs-3">
+            <i class="bi bi-person-plus-fill"></i>
+          </div>
+          <div>
+            <span class="badge bg-danger-subtle text-danger border border-danger mb-1">CUSTOMER PORTAL</span>
+            <h4 class="fw-bold mb-0">Create Customer Account</h4>
+            <p class="text-muted small mb-0">
+              Register with KKK Wheel Care to track service bookings, tyre warranty records, and scheduled maintenance.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback Alerts -->
+      <div *ngIf="successMessage" class="alert alert-success shadow-sm rounded-4 mb-4" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>{{ successMessage }}
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger shadow-sm rounded-4 mb-4" role="alert">
+        <i class="bi bi-exclamation-octagon-fill me-2"></i>{{ errorMessage }}
+      </div>
+
+      <!-- Form Card -->
+      <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+          <div class="row g-3">
+            
+            <!-- Full Name -->
+            <div class="col-md-6">
+              <label for="fullName" class="form-label fw-semibold">Full Name <span class="text-danger">*</span></label>
+              <input type="text" id="fullName" class="form-control" formControlName="fullName"
+                     [ngClass]="{ 'is-invalid': isInvalid('fullName'), 'is-valid': isValid('fullName') }"
+                     placeholder="e.g. Arun Kumar">
+              <div *ngIf="isInvalid('fullName')" class="invalid-feedback">
+                Full name is required (min 3 characters).
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="col-md-6">
+              <label for="email" class="form-label fw-semibold">Email Address <span class="text-danger">*</span></label>
+              <input type="email" id="email" class="form-control" formControlName="email"
+                     [ngClass]="{ 'is-invalid': isInvalid('email'), 'is-valid': isValid('email') }"
+                     placeholder="arun@domain.com">
+              <div *ngIf="isInvalid('email')" class="invalid-feedback">
+                Please enter a valid email format.
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="col-md-6">
+              <label for="phone" class="form-label fw-semibold">Mobile Number <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text">+91</span>
+                <input type="tel" id="phone" class="form-control" formControlName="phone" maxlength="10"
+                       [ngClass]="{ 'is-invalid': isInvalid('phone'), 'is-valid': isValid('phone') }"
+                       placeholder="9000000000">
+              </div>
+              <div *ngIf="isInvalid('phone')" class="text-danger small mt-1">
+                Enter a 10-digit mobile number starting with 6, 7, 8, or 9.
+              </div>
+            </div>
+
+            <!-- Vehicle Number -->
+            <div class="col-md-6">
+              <label for="vehicleNumber" class="form-label fw-semibold">Vehicle Registration No. <span class="text-danger">*</span></label>
+              <input type="text" id="vehicleNumber" class="form-control text-uppercase" formControlName="vehicleNumber"
+                     [ngClass]="{ 'is-invalid': isInvalid('vehicleNumber'), 'is-valid': isValid('vehicleNumber') }"
+                     placeholder="TN-00-AA-0000">
+              <div *ngIf="isInvalid('vehicleNumber')" class="invalid-feedback">
+                Vehicle registration number is required (6-14 characters).
+              </div>
+            </div>
+
+            <!-- Vehicle Type -->
+            <div class="col-md-6">
+              <label for="vehicleType" class="form-label fw-semibold">Vehicle Type</label>
+              <select id="vehicleType" class="form-select" formControlName="vehicleType">
+                <option value="Hatchback">Hatchback (e.g. Swift, Tiago)</option>
+                <option value="Sedan">Sedan (e.g. City, Verna)</option>
+                <option value="SUV">Compact & Full SUV (e.g. Creta, Thar)</option>
+                <option value="Commercial">Commercial / Pickup</option>
+              </select>
+            </div>
+
+            <!-- City -->
+            <div class="col-md-6">
+              <label for="city" class="form-label fw-semibold">City</label>
+              <input type="text" id="city" class="form-control" formControlName="city"
+                     [ngClass]="{ 'is-invalid': isInvalid('city') }">
+              <div *ngIf="isInvalid('city')" class="invalid-feedback">City is required.</div>
+            </div>
+
+            <!-- Pincode -->
+            <div class="col-md-6">
+              <label for="pincode" class="form-label fw-semibold">Pincode</label>
+              <input type="text" id="pincode" class="form-control" formControlName="pincode" maxlength="6"
+                     [ngClass]="{ 'is-invalid': isInvalid('pincode') }">
+              <div *ngIf="isInvalid('pincode')" class="invalid-feedback">Valid 6-digit postal code required.</div>
+            </div>
+
+            <!-- Password -->
+            <div class="col-md-6">
+              <label for="password" class="form-label fw-semibold">Password <span class="text-danger">*</span></label>
+              <input type="password" id="password" class="form-control" formControlName="password"
+                     [ngClass]="{ 'is-invalid': isInvalid('password'), 'is-valid': isValid('password') }"
+                     placeholder="Min 8 chars, 1 upper, 1 digit, 1 symbol">
+              <div *ngIf="isInvalid('password')" class="invalid-feedback">
+                Min 8 chars, at least 1 uppercase letter, 1 number, and 1 special symbol.
+              </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="col-md-6">
+              <label for="confirmPassword" class="form-label fw-semibold">Confirm Password <span class="text-danger">*</span></label>
+              <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword"
+                     [ngClass]="{ 'is-invalid': registerForm.hasError('passwordMismatch') && (registerForm.get('confirmPassword')?.touched || registerForm.get('confirmPassword')?.dirty) }">
+              <div *ngIf="registerForm.hasError('passwordMismatch') && (registerForm.get('confirmPassword')?.touched || registerForm.get('confirmPassword')?.dirty)" class="text-danger small mt-1">
+                Passwords do not match.
+              </div>
+            </div>
+
+            <!-- Terms -->
+            <div class="col-12 mt-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="agreeTerms" formControlName="agreeTerms"
+                       [ngClass]="{ 'is-invalid': isInvalid('agreeTerms') }">
+                <label class="form-check-label small" for="agreeTerms">
+                  I agree to the KKK Wheel Care service agreements, vehicle privacy policy, and SMS appointment updates.
+                </label>
+                <div *ngIf="isInvalid('agreeTerms')" class="invalid-feedback">
+                  You must agree to the terms to proceed.
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="col-12 mt-4">
+              <button type="submit" class="btn btn-danger btn-lg w-100" [disabled]="isSubmitting">
+                <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2"></span>
+                <i *ngIf="!isSubmitting" class="bi bi-person-check-fill me-2"></i>
+                Create Account
+              </button>
+            </div>
+
+          </div>
+        </form>
+
+        <div class="text-center mt-4">
+          <span class="text-muted small">Already registered? </span>
+          <a routerLink="/login" class="fw-semibold text-danger">Sign In Here</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

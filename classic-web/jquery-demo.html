@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery DOM Traversal & Manipulation Lab | KKK Wheel Care</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom Modern CSS3 -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <!-- Academic Bar -->
+  <div class="academic-badge-bar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div>
+        <span class="badge bg-danger me-1">REQUIREMENT 4 RIGOROUS PROOF</span>
+        <strong>jQuery DOM Traversal & Manipulation Academic Laboratory</strong>
+      </div>
+      <div>
+        <a href="index.html" class="text-white text-decoration-none"><i class="bi bi-arrow-left me-1"></i>Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary Navigation -->
+  <header class="bg-white border-bottom shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light py-2">
+      <div class="container">
+        <a class="navbar-brand navbar-brand-kkk d-flex align-items-center gap-2" href="index.html">
+          <i class="bi bi-shield-shaded text-danger fs-2"></i>
+          <span>KKK</span> WHEEL CARE
+        </a>
+        <div class="ms-auto d-flex align-items-center gap-2">
+          <a href="catalogue.html" class="btn btn-outline-secondary btn-sm">Product Catalogue</a>
+          <button id="resetJqHighlights" class="btn btn-warning btn-sm fw-bold">
+            <i class="bi bi-arrow-counterclockwise me-1"></i>Clear Visual Highlights
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container py-4">
+    <!-- Explanatory Header -->
+    <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-2 text-danger">
+            <i class="bi bi-diagram-3-fill me-2"></i>Live jQuery DOM Traversal & Manipulation Suite
+          </h2>
+          <p class="text-muted mb-0">
+            This interactive laboratory demonstrates <strong>Requirement 4</strong> by performing real-time jQuery DOM queries across hierarchical nodes. 
+            Click the buttons on each target card below to see upwards (<code>.parent()</code>, <code>.closest()</code>), downwards (<code>.find()</code>, <code>.children()</code>), and horizontal (<code>.siblings()</code>) traversals visualized with animated highlights and logged to the on-screen console.
+          </p>
+        </div>
+        <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+          <div class="d-inline-flex flex-column gap-1 text-start bg-light p-3 rounded-3 border">
+            <small><span class="badge bg-danger me-1">&nbsp;</span> <strong>Red outline:</strong> Target Node / Closest</small>
+            <small><span class="badge bg-warning text-dark me-1">&nbsp;</span> <strong>Yellow fill:</strong> Parent / Descendants</small>
+            <small><span class="badge bg-primary me-1">&nbsp;</span> <strong>Blue dotted:</strong> Sibling Elements</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Left Column: Interactive DOM Tree Target Cards -->
+      <div class="col-lg-7">
+        <h4 class="fw-bold mb-3 d-flex align-items-center">
+          <i class="bi bi-layers-fill text-danger me-2"></i>Interactive DOM Elements
+        </h4>
+
+        <!-- Sample Card 1: Tyre Product Node -->
+        <div class="card shadow-sm border-0 rounded-4 mb-3 product-item" data-category="tyres" id="nodeCard1">
+          <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center py-2">
+            <span class="small font-monospace text-warning">&lt;div class="product-item" id="nodeCard1"&gt;</span>
+            <span class="badge bg-danger">Tyre Node</span>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div>
+                <h5 class="fw-bold product-title mb-0">Bridgestone Turanza T005 High-Speed Radial</h5>
+                <small class="text-muted">Size: 205/55 R16 | Tubeless Highway Spec</small>
+              </div>
+              <span class="badge bg-success fs-6">₹6,400</span>
+            </div>
+
+            <!-- DOM Action Buttons for Card 1 -->
+            <div class="p-3 bg-light rounded-3 border mt-3 button-control-group">
+              <span class="small text-muted d-block mb-2 font-monospace fw-bold">&lt;div class="button-control-group"&gt; Traversal Triggers:</span>
+              <div class="d-flex flex-wrap gap-2">
+                <button type="button" class="btn btn-sm btn-outline-warning text-dark btn-jq-parent" title="Traverse to .parent()">
+                  <i class="bi bi-arrow-up-circle me-1"></i>.parent()
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger btn-jq-closest" title="Traverse to .closest('.product-item')">
+                  <i class="bi bi-box-arrow-in-up-right me-1"></i>.closest('.product-item')
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-success btn-jq-children" title="Traverse to .children() and .find('.badge')">
+                  <i class="bi bi-arrow-down-circle me-1"></i>.find('.badge')
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-primary btn-jq-siblings" title="Traverse to .siblings('button')">
+                  <i class="bi bi-arrows-expand me-1"></i>.siblings('button')
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sample Card 2: Battery Product Node -->
+        <div class="card shadow-sm border-0 rounded-4 mb-3 product-item" data-category="batteries" id="nodeCard2">
+          <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center py-2">
+            <span class="small font-monospace text-warning">&lt;div class="product-item" id="nodeCard2"&gt;</span>
+            <span class="badge bg-warning text-dark">Battery Node</span>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div>
+                <h5 class="fw-bold product-title mb-0">Amaron PRO 65Ah Zero-Maintenance Battery</h5>
+                <small class="text-muted">High Cranking Power | 60-Month Replacement Guarantee</small>
+              </div>
+              <span class="badge bg-success fs-6">₹5,900</span>
+            </div>
+
+            <!-- DOM Action Buttons for Card 2 -->
+            <div class="p-3 bg-light rounded-3 border mt-3 button-control-group">
+              <span class="small text-muted d-block mb-2 font-monospace fw-bold">&lt;div class="button-control-group"&gt; Traversal Triggers:</span>
+              <div class="d-flex flex-wrap gap-2">
+                <button type="button" class="btn btn-sm btn-outline-warning text-dark btn-jq-parent">
+                  <i class="bi bi-arrow-up-circle me-1"></i>.parent()
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger btn-jq-closest">
+                  <i class="bi bi-box-arrow-in-up-right me-1"></i>.closest('.product-item')
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-success btn-jq-children">
+                  <i class="bi bi-arrow-down-circle me-1"></i>.find('.badge')
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-primary btn-jq-siblings">
+                  <i class="bi bi-arrows-expand me-1"></i>.siblings('button')
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sample Card 3: Solar Water Heater Node -->
+        <div class="card shadow-sm border-0 rounded-4 mb-3 product-item" data-category="solar" id="nodeCard3">
+          <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center py-2">
+            <span class="small font-monospace text-warning">&lt;div class="product-item" id="nodeCard3"&gt;</span>
+            <span class="badge bg-info text-dark">Green Tech Node</span>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div>
+                <h5 class="fw-bold product-title mb-0">Evacuated Tube Solar Water Heater 250 LPD</h5>
+                <small class="text-muted">Tri-element Borosilicate 3.3 Tubes | Rustproof Stand</small>
+              </div>
+              <span class="badge bg-success fs-6">₹32,000</span>
+            </div>
+
+            <!-- DOM Action Buttons for Card 3 -->
+            <div class="p-3 bg-light rounded-3 border mt-3 button-control-group">
+              <span class="small text-muted d-block mb-2 font-monospace fw-bold">&lt;div class="button-control-group"&gt; Traversal Triggers:</span>
+              <div class="d-flex flex-wrap gap-2">
+                <button type="button" class="btn btn-sm btn-outline-warning text-dark btn-jq-parent">
+                  <i class="bi bi-arrow-up-circle me-1"></i>.parent()
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger btn-jq-closest">
+                  <i class="bi bi-box-arrow-in-up-right me-1"></i>.closest('.product-item')
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-success btn-jq-children">
+                  <i class="bi bi-arrow-down-circle me-1"></i>.find('.badge')
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-primary btn-jq-siblings">
+                  <i class="bi bi-arrows-expand me-1"></i>.siblings('button')
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Real-time Live Log & Manipulation Controls -->
+      <div class="col-lg-5">
+        <!-- Live Console Terminal -->
+        <div class="card border-0 shadow-sm rounded-4 bg-white p-3 mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="fw-bold mb-0 text-dark">
+              <i class="bi bi-terminal-fill text-success me-2"></i>jQuery Traversal Console
+            </h5>
+            <span class="badge bg-success">Live Stream</span>
+          </div>
+          <p class="small text-muted mb-2">Inspect real-time logs of each selector and traversal action invoked:</p>
+          <div class="console-terminal" id="jqueryConsole">
+            <div>[INIT] Ready. Click traversal triggers to evaluate DOM traversal paths.</div>
+          </div>
+        </div>
+
+        <!-- DOM Manipulation Controls -->
+        <div class="card border-0 shadow-sm rounded-4 bg-white p-3">
+          <h5 class="fw-bold mb-2">
+            <i class="bi bi-tools text-primary me-2"></i>DOM Manipulation Triggers
+          </h5>
+          <p class="small text-muted mb-3">Test dynamic node creation, insertion, animation, and deletion:</p>
+
+          <div class="d-grid gap-2">
+            <button class="btn btn-outline-success btn-sm text-start" id="btnAppendAlert">
+              <i class="bi bi-plus-square me-2"></i><code>.prepend()</code> Service Advisory Banner
+            </button>
+            <button class="btn btn-outline-primary btn-sm text-start" id="btnToggleDetails">
+              <i class="bi bi-arrows-collapse me-2"></i><code>.slideToggle()</code> Tech Specs Box
+            </button>
+            <button class="btn btn-outline-warning text-dark btn-sm text-start" id="btnAnimateBadge">
+              <i class="bi bi-stars me-2"></i><code>.animate()</code> Price Badges Glow
+            </button>
+            <button class="btn btn-outline-danger btn-sm text-start" id="btnRemoveAlert">
+              <i class="bi bi-trash3 me-2"></i><code>.remove()</code> Prepend Banners
+            </button>
+          </div>
+
+          <!-- Dynamic Container for Manipulation Experiments -->
+          <div id="dynamicAlertSlot" class="mt-3"></div>
+
+          <div id="slidingSpecsBox" class="mt-3 p-3 bg-light rounded-3 border" style="display: none;">
+            <strong class="d-block text-dark small mb-1"><i class="bi bi-gear-fill me-1"></i>Computerized Sensor Calibration:</strong>
+            <span class="small text-muted">
+              Toe Angle: +0.02° | Camber Angle: -0.45° | Castor Angle: +4.10° | Runout Tolerance: &lt; 0.05 mm.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-secondary py-3 text-center small mt-5">
+    <div class="container">
+      &copy; 2026 KKK Wheel Care. Verified Academic Demonstration for Requirement 4.
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+    <div id="liveActionToast" class="toast align-items-center text-bg-dark border-0" role="alert">
+      <div class="d-flex">
+        <div class="toast-body" id="liveToastMsg">Action updated!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/jquery-interactions.js"></script>
+
+  <!-- Interactive Lab Specific Script -->
+  <script>
+    $(document).ready(function() {
+      let bannerCount = 0;
+
+      // .prepend() manipulation
+      $('#btnAppendAlert').on('click', function() {
+        bannerCount++;
+        const newBanner = $(`
+          <div class="alert alert-info alert-dismissible fade show dynamic-banner shadow-sm" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <strong>Flash Advisory #${bannerCount}:</strong> Free Nitrogen Top-up with all 3D Wheel Alignments today!
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        `);
+        $('#dynamicAlertSlot').prepend(newBanner);
+        newBanner.hide().slideDown(300);
+        logConsole(`DOM Manipulation: $('#dynamicAlertSlot').prepend() dynamically inserted Advisory #${bannerCount}.`);
+      });
+
+      // .slideToggle() manipulation
+      $('#btnToggleDetails').on('click', function() {
+        $('#slidingSpecsBox').slideToggle(300, function() {
+          const isVisible = $(this).is(':visible');
+          logConsole(`DOM Manipulation: $('#slidingSpecsBox').slideToggle() toggled visibility -> ${isVisible ? 'VISIBLE' : 'HIDDEN'}.`);
+        });
+      });
+
+      // .animate() manipulation
+      $('#btnAnimateBadge').on('click', function() {
+        $('.badge.bg-success').fadeTo(150, 0.2).fadeTo(250, 1.0);
+        logConsole("DOM Manipulation & Animation: Applied .fadeTo() sequence to .badge.bg-success.");
+      });
+
+      // .remove() manipulation
+      $('#btnRemoveAlert').on('click', function() {
+        const count = $('.dynamic-banner').length;
+        $('.dynamic-banner').slideUp(200, function() {
+          $(this).remove();
+        });
+        logConsole(`DOM Manipulation: $('.dynamic-banner').remove() removed ${count} banner element(s).`);
+      });
+
+      function logConsole(msg) {
+        const time = new Date().toLocaleTimeString();
+        const line = $(`<div>[${time}] ${msg}</div>`);
+        $('#jqueryConsole').prepend(line);
+      }
+    });
+  </script>
+</body>
+</html>

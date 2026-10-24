@@ -1,0 +1,127 @@
+<div class="container py-4">
+  <!-- Profile Header Card -->
+  <div class="card border-0 shadow-sm rounded-4 mb-4 bg-white p-4">
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <div class="rounded-circle bg-danger text-white d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; font-size: 2rem;">
+          <i class="bi bi-person-fill"></i>
+        </div>
+      </div>
+      <div class="col">
+        <h3 class="fw-bold mb-1">{{ customer?.full_name || 'Valued Customer' }}</h3>
+        <p class="text-muted mb-1">{{ customer?.email || 'customer@kkkwheelcare.com' }}</p>
+        <span class="badge bg-success-subtle text-success border border-success">
+          <i class="bi bi-patch-check-fill me-1"></i>Verified Member | Vehicle: {{ customer?.vehicle_number }}
+        </span>
+      </div>
+      <div class="col-auto text-end">
+        <button (click)="logout()" class="btn btn-outline-danger btn-sm">
+          <i class="bi bi-box-arrow-right me-1"></i>Logout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="successMessage" class="alert alert-success shadow-sm rounded-4 mb-4">
+    <i class="bi bi-check-circle-fill me-2"></i>{{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger shadow-sm rounded-4 mb-4">
+    <i class="bi bi-exclamation-octagon-fill me-2"></i>{{ errorMessage }}
+  </div>
+
+  <div class="row g-4">
+    <!-- Left Column: Contact & Vehicle Settings -->
+    <div class="col-lg-6">
+      <div class="card border-0 shadow-sm rounded-4 bg-white p-4 h-100">
+        <h5 class="fw-bold mb-3 d-flex align-items-center">
+          <i class="bi bi-gear-fill text-danger me-2"></i>Edit Contact & Vehicle Profile
+        </h5>
+        
+        <form [formGroup]="profileForm" (ngSubmit)="onSave()" novalidate>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Full Name</label>
+            <input type="text" class="form-control" formControlName="fullName">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Email Address (Read-Only)</label>
+            <input type="email" class="form-control bg-light" [value]="customer?.email" readonly>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Mobile Number</label>
+            <input type="tel" class="form-control" formControlName="phone" maxlength="10">
+          </div>
+
+          <div class="row g-2 mb-3">
+            <div class="col-md-7">
+              <label class="form-label fw-semibold">Primary Vehicle Reg No.</label>
+              <input type="text" class="form-control text-uppercase" formControlName="vehicleNumber">
+            </div>
+            <div class="col-md-5">
+              <label class="form-label fw-semibold">Category</label>
+              <select class="form-select" formControlName="vehicleType">
+                <option value="Hatchback">Hatchback</option>
+                <option value="Sedan">Sedan</option>
+                <option value="SUV">SUV</option>
+                <option value="Commercial">Commercial</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row g-2 mb-3">
+            <div class="col-md-7">
+              <label class="form-label fw-semibold">City</label>
+              <input type="text" class="form-control" formControlName="city">
+            </div>
+            <div class="col-md-5">
+              <label class="form-label fw-semibold">Pincode</label>
+              <input type="text" class="form-control" formControlName="pincode" maxlength="6">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-danger w-100 mt-2" [disabled]="isSaving || profileForm.invalid">
+            <span *ngIf="isSaving" class="spinner-border spinner-border-sm me-2"></span>
+            <i *ngIf="!isSaving" class="bi bi-floppy-fill me-2"></i>
+            Save Profile Changes
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Column: Service Bookings from MySQL -->
+    <div class="col-lg-6">
+      <div class="card border-0 shadow-sm rounded-4 bg-white p-4 h-100">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="fw-bold mb-0 d-flex align-items-center">
+            <i class="bi bi-calendar2-check text-danger me-2"></i>Workshop Service Bookings
+          </h5>
+          <a routerLink="/bookings" class="btn btn-sm btn-outline-danger">
+            <i class="bi bi-plus-lg me-1"></i>New Booking
+          </a>
+        </div>
+
+        <div *ngIf="bookings.length === 0" class="text-center py-4 text-muted">
+          <i class="bi bi-calendar-x fs-1 d-block mb-2 text-secondary"></i>
+          No appointments recorded yet. Click <strong>New Booking</strong> to schedule your 3D alignment!
+        </div>
+
+        <div *ngFor="let b of bookings" class="border rounded-3 p-3 mb-3 bg-light">
+          <div class="d-flex justify-content-between align-items-start mb-1">
+            <strong class="text-dark">{{ b.service_name }}</strong>
+            <span class="badge" [ngClass]="b.status === 'CONFIRMED' ? 'bg-success' : 'bg-primary'">
+              {{ b.status }}
+            </span>
+          </div>
+          <div class="small text-muted mb-2">
+            Ref: <span class="badge bg-secondary font-monospace">{{ b.booking_reference }}</span> | Vehicle: <strong>{{ b.vehicle_number }}</strong>
+          </div>
+          <div class="d-flex justify-content-between align-items-center small border-top pt-2 mt-2">
+            <span><i class="bi bi-clock me-1"></i>{{ b.booking_date }} at {{ b.time_slot }}</span>
+            <span class="fw-bold text-danger">₹{{ b.service_price | number:'1.2-2' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

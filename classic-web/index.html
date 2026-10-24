@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KKK Wheel Care - Integrated Automotive Care, Tyres, Batteries, Solar Water Heaters & Water Purification Systems">
+  <title>KKK Wheel Care | Premium Auto Care & Allied Solutions</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom Modern CSS3 -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Academic Verification Bar -->
+  <div class="academic-badge-bar">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div>
+        <span class="badge bg-danger me-1">ACADEMIC PROJECT</span>
+        <strong>KKK Wheel Care</strong> — Integrated Full-Stack Vehicle Care & Green Tech System
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <span><i class="bi bi-geo-alt-fill text-warning me-1"></i>Service Hub: Main Ring Road</span>
+        <span><i class="bi bi-telephone-fill text-warning me-1"></i>+91 98450 12345</span>
+        <a href="jquery-demo.html" class="fw-semibold"><i class="bi bi-code-slash me-1"></i>jQuery Traversal Lab</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary Navigation (HTML5 <header> & <nav>) -->
+  <header class="sticky-top bg-white border-bottom shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light py-2">
+      <div class="container">
+        <a class="navbar-brand navbar-brand-kkk d-flex align-items-center gap-2" href="index.html">
+          <i class="bi bi-shield-shaded text-danger fs-2"></i>
+          <span>KKK</span> WHEEL CARE
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link active" href="index.html"><i class="bi bi-house-door me-1"></i>Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="catalogue.html"><i class="bi bi-grid-3x3-gap me-1"></i>Catalogue & Tyres</a></li>
+            <li class="nav-item"><a class="nav-link" href="booking.html"><i class="bi bi-calendar-check me-1"></i>Book Service</a></li>
+            <li class="nav-item"><a class="nav-link text-primary fw-semibold" href="jquery-demo.html"><i class="bi bi-magic me-1"></i>jQuery Lab</a></li>
+            <li class="nav-item"><a class="nav-link" href="payment.html"><i class="bi bi-credit-card me-1"></i>Checkout</a></li>
+            <li class="nav-item"><a class="nav-link" href="profile.html"><i class="bi bi-person-circle me-1"></i>Profile</a></li>
+            <li class="nav-item ms-lg-2"><a class="btn btn-outline-brand btn-sm" href="login.html">Login</a></li>
+            <li class="nav-item ms-lg-2"><a class="btn btn-brand btn-sm" href="register.html">Sign Up</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero-section text-center text-lg-start">
+      <div class="container py-4">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <span class="hero-tag"><i class="bi bi-patch-check-fill me-1"></i>Certified Precision Automotive Diagnostics</span>
+            <h1 class="hero-title mb-3">Complete Vehicle Care, Tyres & Green Solutions</h1>
+            <p class="hero-subtitle mb-4">
+              Authorized dealer for MRF, Apollo, Bridgestone, Michelin & Amaron batteries. 
+              Equipped with German 3D computerized wheel alignment, high-speed balancing, plus our allied division for solar water heaters and RO water purifiers.
+            </p>
+            <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+              <a href="booking.html" class="btn btn-brand btn-lg shadow-sm">
+                <i class="bi bi-calendar2-plus me-2"></i>Book Service Appointment
+              </a>
+              <a href="catalogue.html" class="btn btn-outline-light btn-lg">
+                <i class="bi bi-search me-2"></i>Explore Products
+              </a>
+              <a href="jquery-demo.html" class="btn btn-warning btn-lg text-dark fw-bold">
+                <i class="bi bi-cpu-fill me-2"></i>Test jQuery Lab (Req 4)
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden bg-dark text-white p-3 border border-secondary">
+              <div class="card-body p-3">
+                <h5 class="card-title text-warning fw-bold mb-3 d-flex align-items-center">
+                  <i class="bi bi-funnel-fill me-2"></i>Instant Smart Tyre Finder
+                </h5>
+                <p class="small text-secondary mb-3">Select your driving requirement to match verified tyres from our inventory:</p>
+                <form id="tyreFinderForm">
+                  <div class="mb-2">
+                    <label for="finderVehicleType" class="form-label text-light small mb-1">Vehicle Type</label>
+                    <select id="finderVehicleType" class="form-select form-select-sm bg-secondary text-white border-0">
+                      <option value="">-- All Vehicle Types --</option>
+                      <option value="sedan">Sedan / Hatchback</option>
+                      <option value="suv">Compact & Full-size SUV</option>
+                      <option value="commercial">Commercial / Pickup</option>
+                    </select>
+                  </div>
+                  <div class="mb-2">
+                    <label for="finderTerrain" class="form-label text-light small mb-1">Primary Driving Terrain</label>
+                    <select id="finderTerrain" class="form-select form-select-sm bg-secondary text-white border-0">
+                      <option value="">-- Any Terrain --</option>
+                      <option value="city">City Commute & Highways (Fuel Saver)</option>
+                      <option value="all-terrain">All-Terrain & Rugged Roads (AT)</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="finderPriority" class="form-label text-light small mb-1">Key Preference</label>
+                    <select id="finderPriority" class="form-select form-select-sm bg-secondary text-white border-0">
+                      <option value="comfort">Quiet Cabin & Maximum Ride Comfort</option>
+                      <option value="durability">High Mileage & Cut Resistance</option>
+                      <option value="performance">Wet Grip & High-Speed Stability</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-danger w-100 fw-semibold">
+                    <i class="bi bi-lightning-charge me-1"></i>Find Recommended Tyres
+                  </button>
+                </form>
+                <div id="recommendationAlert" class="alert alert-info mt-3 p-2 small d-none" role="alert"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business Divisions Overview -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="badge bg-danger px-3 py-2 text-uppercase fw-bold">Full Spectrum Solutions</span>
+          <h2 class="fw-bold mt-2">What KKK Wheel Care Delivers</h2>
+          <p class="text-muted mx-auto" style="max-width: 650px;">
+            Combining automotive excellence with sustainable energy systems under one trusted facility.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <!-- 1. Tyres -->
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-disc"></i>
+              </div>
+              <h4 class="fw-bold">Tyre Sales & Expert Advice</h4>
+              <p class="text-muted">
+                Authorized dealers for MRF, Bridgestone, Apollo, Michelin, and Goodyear. Tubeless repairs, nitrogen inflation, and laser rim diagnostics.
+              </p>
+              <a href="catalogue.html?cat=tyres" class="text-danger fw-semibold text-decoration-none">
+                Browse Tyre Catalogue <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 2. Wheel Alignment -->
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-compass"></i>
+              </div>
+              <h4 class="fw-bold">3D Alignment & Balancing</h4>
+              <p class="text-muted">
+                State-of-the-art DSP camera-based computerized 3D wheel alignment, dynamic wheel balancing, and camber/caster calibration for optimal tyre life.
+              </p>
+              <a href="booking.html?service=alignment" class="text-danger fw-semibold text-decoration-none">
+                Book Alignment Slot <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 3. Batteries -->
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-battery-charging"></i>
+              </div>
+              <h4 class="fw-bold">Automotive & Inverter Batteries</h4>
+              <p class="text-muted">
+                Genuine Amaron, Exide, and SF Sonic batteries with instant computerized health test, jump-start assistance, and old battery exchange rebates.
+              </p>
+              <a href="catalogue.html?cat=batteries" class="text-danger fw-semibold text-decoration-none">
+                Explore Batteries <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 4. Solar Water Heaters -->
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <div class="feature-icon-wrapper text-warning" style="background: rgba(255, 183, 3, 0.15);">
+                <i class="bi bi-sun-fill"></i>
+              </div>
+              <h4 class="fw-bold">Solar Water Heaters</h4>
+              <p class="text-muted">
+                Green energy division offering evacuated tube (ETC) and flat plate collector (FPC) solar thermal water heating for residential villas and hotels.
+              </p>
+              <a href="catalogue.html?cat=solar" class="text-danger fw-semibold text-decoration-none">
+                Solar Heater Systems <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 5. Water Purification -->
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <div class="feature-icon-wrapper text-primary" style="background: rgba(13, 110, 253, 0.1);">
+                <i class="bi bi-droplet-half"></i>
+              </div>
+              <h4 class="fw-bold">Water Purification & RO</h4>
+              <p class="text-muted">
+                Multi-stage Reverse Osmosis (RO), Ultra Violet (UV), and alkaline mineralizers for pure drinking water with proactive filter maintenance plans.
+              </p>
+              <a href="catalogue.html?cat=purifiers" class="text-danger fw-semibold text-decoration-none">
+                Water Purifier Models <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 6. Express Services -->
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <div class="feature-icon-wrapper text-success" style="background: rgba(25, 135, 84, 0.1);">
+                <i class="bi bi-wrench-adjustable-circle"></i>
+              </div>
+              <h4 class="fw-bold">Express Pit-Stop Checkup</h4>
+              <p class="text-muted">
+                21-point vehicle safety inspection covering brake pad wear, suspension health, fluid levels, wipers, and tyre tread depth measurement.
+              </p>
+              <a href="booking.html" class="text-danger fw-semibold text-decoration-none">
+                Schedule Checkup <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic Requirements Live Status Bar -->
+    <section class="py-4 bg-dark text-white border-top border-bottom border-secondary">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4">
+            <h5 class="fw-bold text-warning mb-1"><i class="bi bi-clipboard2-check me-2"></i>Academic Verification Tracker</h5>
+            <small class="text-light">10 / 10 Mandatory System Specifications</small>
+          </div>
+          <div class="col-lg-8">
+            <div class="d-flex flex-wrap gap-2 justify-content-lg-end">
+              <span class="badge bg-success p-2"><i class="bi bi-check-lg me-1"></i>Req 1: HTML5/CSS3</span>
+              <span class="badge bg-success p-2"><i class="bi bi-check-lg me-1"></i>Req 2: Bootstrap UI</span>
+              <span class="badge bg-success p-2"><i class="bi bi-check-lg me-1"></i>Req 3: JS Form Validation</span>
+              <span class="badge bg-success p-2"><i class="bi bi-check-lg me-1"></i>Req 4: jQuery DOM Lab</span>
+              <span class="badge bg-secondary p-2"><i class="bi bi-hourglass me-1"></i>Req 5: Node HTTP</span>
+              <span class="badge bg-secondary p-2"><i class="bi bi-hourglass me-1"></i>Req 6: MySQL 3-Tier</span>
+              <span class="badge bg-secondary p-2"><i class="bi bi-hourglass me-1"></i>Req 7: Angular Forms</span>
+              <span class="badge bg-secondary p-2"><i class="bi bi-hourglass me-1"></i>Req 8: Angular Routing</span>
+              <span class="badge bg-secondary p-2"><i class="bi bi-hourglass me-1"></i>Req 9: Seneca Microservice</span>
+              <span class="badge bg-secondary p-2"><i class="bi bi-hourglass me-1"></i>Req 10: Mobile/Deploy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="kkk-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h5 class="navbar-brand-kkk text-white"><span>KKK</span> WHEEL CARE</h5>
+          <p class="text-secondary small mt-3">
+            Integrated vehicle care, high-precision tyre engineering, automated alignment, premium automotive batteries, and sustainable energy water solutions.
+          </p>
+          <div class="d-flex gap-3 text-secondary mt-3">
+            <i class="bi bi-facebook fs-5"></i>
+            <i class="bi bi-twitter-x fs-5"></i>
+            <i class="bi bi-instagram fs-5"></i>
+            <i class="bi bi-linkedin fs-5"></i>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-2">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="index.html">Home</a></li>
+            <li class="mb-2"><a href="catalogue.html">Product Catalogue</a></li>
+            <li class="mb-2"><a href="booking.html">Book Service</a></li>
+            <li class="mb-2"><a href="jquery-demo.html">jQuery Traversal Lab</a></li>
+            <li class="mb-2"><a href="payment.html">Mock Checkout</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-lg-3">
+          <h5>Customer Portal</h5>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="login.html">Customer Login</a></li>
+            <li class="mb-2"><a href="register.html">New Customer Registration</a></li>
+            <li class="mb-2"><a href="profile.html">Vehicle & Profile Manager</a></li>
+            <li class="mb-2"><a href="payment.html">Billing & Receipt Verification</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-lg-3">
+          <h5>Workshop Hours</h5>
+          <p class="small text-secondary mb-1">Monday – Saturday: 8:30 AM – 8:30 PM</p>
+          <p class="small text-secondary mb-3">Sunday: 9:00 AM – 2:00 PM</p>
+          <p class="small text-warning"><i class="bi bi-telephone-outbound me-2"></i>Emergency Breakdown: 1800-425-9999</p>
+        </div>
+      </div>
+      <hr class="border-secondary mt-4 mb-3">
+      <div class="text-center small text-secondary">
+        &copy; 2026 KKK Wheel Care Academic Project. Designed for Full-Stack Web Development Course Evaluation.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container for Interactive Actions -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+    <div id="liveActionToast" class="toast align-items-center text-bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="liveToastMsg">
+          Action triggered!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery & Bootstrap 5 Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Scripts -->
+  <script src="js/validation.js"></script>
+  <script src="js/jquery-interactions.js"></script>
+</body>
+</html>

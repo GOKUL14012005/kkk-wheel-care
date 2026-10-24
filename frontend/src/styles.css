@@ -1,0 +1,13 @@
+/* Global Styles for Angular Application */
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #2b2d42;
+  margin: 0;
+}
+
+.navbar .nav-link.active {
+  color: #d90429 !important;
+  font-weight: 700;
+  border-bottom: 2px solid #d90429;
+}

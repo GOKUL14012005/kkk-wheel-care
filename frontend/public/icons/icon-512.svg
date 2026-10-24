@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="grad512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d90429;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1b1d20;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#grad512)" />
+  <!-- Wheel Rim & Tyre Outer Ring -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#ffffff" stroke-width="32" />
+  <circle cx="256" cy="256" r="110" fill="none" stroke="#ffb703" stroke-width="20" />
+  <circle cx="256" cy="256" r="40" fill="#ffffff" />
+  <!-- Precision Spokes -->
+  <line x1="256" y1="76" x2="256" y2="436" stroke="#ffffff" stroke-width="16" />
+  <line x1="76" y1="256" x2="436" y2="256" stroke="#ffffff" stroke-width="16" />
+  <line x1="128" y1="128" x2="384" y2="384" stroke="#ffffff" stroke-width="16" />
+  <line x1="128" y1="384" x2="384" y2="128" stroke="#ffffff" stroke-width="16" />
+</svg>

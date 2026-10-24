@@ -1,0 +1,166 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <!-- Business Header -->
+      <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
+        <div class="d-flex align-items-center gap-3">
+          <div class="rounded-circle bg-danger-subtle text-danger p-3 fs-3">
+            <i class="bi bi-calendar2-week"></i>
+          </div>
+          <div>
+            <span class="badge bg-danger-subtle text-danger border border-danger mb-1">WORKSHOP SERVICE APPOINTMENTS</span>
+            <h4 class="fw-bold mb-0">Book a Service Appointment</h4>
+            <p class="text-muted small mb-0">
+              Select your service package and preferred bay schedule. Our service advisor will review your vehicle details and confirm your slot.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Success Confirmation Card -->
+      <div *ngIf="createdBooking" class="card border-0 shadow-lg rounded-4 p-4 p-md-5 bg-white mb-4 border-top border-success border-4">
+        <div class="text-center mb-4">
+          <div class="rounded-circle bg-success-subtle text-success d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 64px; height: 64px; font-size: 2rem;">
+            <i class="bi bi-patch-check-fill"></i>
+          </div>
+          <h3 class="fw-bold text-success">Service Appointment Request Received!</h3>
+          <p class="text-muted">Your appointment request has been recorded and awaits workshop confirmation.</p>
+        </div>
+
+        <div class="bg-light p-3 rounded-3 border mb-4">
+          <div class="row g-2 small">
+            <div class="col-sm-6"><strong>Booking Reference:</strong> <span class="badge bg-danger font-monospace fs-6">{{ createdBooking.booking_reference }}</span></div>
+            <div class="col-sm-6"><strong>Vehicle Reg:</strong> {{ createdBooking.vehicle_number }}</div>
+            <div class="col-sm-6"><strong>Service Package:</strong> {{ createdBooking.service_name }}</div>
+            <div class="col-sm-6"><strong>Scheduled Date:</strong> {{ createdBooking.booking_date }} at {{ createdBooking.time_slot }}</div>
+            <div class="col-sm-6"><strong>Estimated Amount:</strong> ₹{{ createdBooking.service_price | number:'1.2-2' }}</div>
+            <div class="col-sm-6"><strong>Status:</strong> <span class="badge bg-warning text-dark"><i class="bi bi-hourglass-split me-1"></i>Awaiting Confirmation</span></div>
+          </div>
+        </div>
+
+        <div class="alert alert-info small d-flex align-items-center gap-2 mb-4">
+          <i class="bi bi-info-circle-fill fs-5"></i>
+          <span>Our service advisor will contact you at <strong>{{ createdBooking.customer_phone || bookingForm.get('customerPhone')?.value }}</strong> to confirm your scheduled bay slot.</span>
+        </div>
+
+        <div class="d-flex justify-content-center gap-3">
+          <a routerLink="/profile" class="btn btn-danger">View in My Garage</a>
+          <button (click)="createdBooking = null" class="btn btn-outline-secondary">Book Another Service</button>
+        </div>
+      </div>
+
+      <!-- Error Alert -->
+      <div *ngIf="errorMessage" class="alert alert-danger shadow-sm rounded-4 mb-4">
+        <i class="bi bi-exclamation-octagon-fill me-2"></i>{{ errorMessage }}
+      </div>
+
+      <!-- Booking Form -->
+      <div *ngIf="!createdBooking" class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white">
+        <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" novalidate>
+          <div class="row g-3">
+            
+            <!-- Service Package Selection -->
+            <div class="col-12">
+              <label for="serviceIndex" class="form-label fw-semibold">Select Workshop Service Package <span class="text-danger">*</span></label>
+              <select id="serviceIndex" class="form-select form-select-lg" formControlName="serviceIndex">
+                <option *ngFor="let s of servicesList; let idx = index" [value]="idx">
+                  {{ s.name }} — ₹{{ s.price | number:'1.2-2' }}
+                </option>
+              </select>
+            </div>
+
+            <!-- Customer Name -->
+            <div class="col-md-6">
+              <label for="customerName" class="form-label fw-semibold">Customer Name <span class="text-danger">*</span></label>
+              <input type="text" id="customerName" class="form-control" formControlName="customerName"
+                     [ngClass]="{ 'is-invalid': isInvalid('customerName') }"
+                     placeholder="e.g. Rajesh Kumar">
+              <div *ngIf="isInvalid('customerName')" class="invalid-feedback">Name is required (min 3 chars).</div>
+            </div>
+
+            <!-- Customer Email -->
+            <div class="col-md-6">
+              <label for="customerEmail" class="form-label fw-semibold">Email Address <span class="text-danger">*</span></label>
+              <input type="email" id="customerEmail" class="form-control" formControlName="customerEmail"
+                     [ngClass]="{ 'is-invalid': isInvalid('customerEmail') }"
+                     placeholder="name@domain.com">
+              <div *ngIf="isInvalid('customerEmail')" class="invalid-feedback">Valid email address required.</div>
+            </div>
+
+            <!-- Customer Phone -->
+            <div class="col-md-6">
+              <label for="customerPhone" class="form-label fw-semibold">Mobile Number <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text">+91</span>
+                <input type="tel" id="customerPhone" class="form-control" formControlName="customerPhone" maxlength="10"
+                       [ngClass]="{ 'is-invalid': isInvalid('customerPhone') }"
+                       placeholder="9000000000">
+              </div>
+              <div *ngIf="isInvalid('customerPhone')" class="invalid-feedback d-block">10-digit mobile number starting with 6-9 required.</div>
+            </div>
+
+            <!-- Vehicle Number -->
+            <div class="col-md-6">
+              <label for="bookVehicle" class="form-label fw-semibold">Vehicle Registration No. <span class="text-danger">*</span></label>
+              <input type="text" id="bookVehicle" class="form-control text-uppercase" formControlName="vehicleNumber"
+                     [ngClass]="{ 'is-invalid': isInvalid('vehicleNumber') }"
+                     placeholder="TN-00-AA-0000">
+              <div *ngIf="isInvalid('vehicleNumber')" class="invalid-feedback">Vehicle registration number required (6-14 chars).</div>
+            </div>
+
+            <!-- Date & Time -->
+            <div class="col-md-6">
+              <label for="bookingDate" class="form-label fw-semibold">Appointment Date <span class="text-danger">*</span></label>
+              <input type="date" id="bookingDate" class="form-control" [min]="minDate" formControlName="bookingDate"
+                     [ngClass]="{ 'is-invalid': isInvalid('bookingDate') }">
+              <div *ngIf="isInvalid('bookingDate')" class="invalid-feedback">Please select a valid booking date.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="timeSlot" class="form-label fw-semibold">Preferred Bay Time Slot <span class="text-danger">*</span></label>
+              <select id="timeSlot" class="form-select" formControlName="timeSlot">
+                <option value="09:00 AM">09:00 AM – 10:00 AM (Morning)</option>
+                <option value="10:30 AM">10:30 AM – 11:30 AM</option>
+                <option value="02:00 PM">02:00 PM – 03:00 PM (Afternoon)</option>
+                <option value="04:30 PM">04:30 PM – 05:30 PM (Evening)</option>
+                <option value="06:00 PM">06:00 PM – 07:00 PM</option>
+              </select>
+            </div>
+
+            <!-- Technician Notes -->
+            <div class="col-12">
+              <label for="notes" class="form-label fw-semibold">Vehicle Symptoms / Instructions for Technician</label>
+              <textarea id="notes" class="form-control" formControlName="notes" rows="2"
+                        placeholder="e.g. Steering vibration at high speed, check tyre tread depth or balance weights..."></textarea>
+            </div>
+
+            <!-- Payment Information Summary -->
+            <div class="col-12 mt-3">
+              <div class="card bg-light border p-3 rounded-3">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                  <div>
+                    <h6 class="fw-bold mb-1 text-dark"><i class="bi bi-wallet2 text-danger me-2"></i>Estimated Workshop Service Charge</h6>
+                    <span class="small text-muted">Pay at workshop after service completion (UPI, Credit/Debit Card, or Cash accepted).</span>
+                  </div>
+                  <span class="fs-4 fw-bold text-danger">₹{{ getSelectedService().price | number:'1.2-2' }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="col-12 mt-4">
+              <button type="submit" class="btn btn-danger btn-lg w-100" [disabled]="isSubmitting">
+                <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2"></span>
+                <i *ngIf="!isSubmitting" class="bi bi-calendar-check-fill me-2"></i>
+                {{ isSubmitting ? 'Submitting Appointment Request...' : 'Submit Service Appointment Request' }}
+              </button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

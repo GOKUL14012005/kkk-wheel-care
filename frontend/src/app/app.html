@@ -1,0 +1,104 @@
+<!-- Business Utility Header Bar -->
+<div class="bg-black text-light py-2 small border-bottom border-danger">
+  <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div class="d-flex align-items-center gap-3">
+      <span><i class="bi bi-geo-alt-fill me-1 text-danger"></i>Opp. New Bus Stand, Main Road</span>
+      <span class="d-none d-md-inline text-secondary">|</span>
+      <span><i class="bi bi-clock-history me-1 text-warning"></i>Mon–Sat: 8:30 AM – 8:30 PM | Sun: 9:00 AM – 2:00 PM</span>
+    </div>
+    <div class="d-flex align-items-center gap-3">
+      <a href="tel:+919845012345" class="text-light text-decoration-none">
+        <i class="bi bi-telephone-fill me-1 text-danger"></i><strong>+91 98450 12345</strong>
+      </a>
+      <span class="text-secondary">|</span>
+      <a href="mailto:service@kkkwheelcare.com" class="text-light text-decoration-none">
+        <i class="bi bi-envelope-fill me-1 text-danger"></i>service@kkkwheelcare.com
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Primary Angular Navigation Bar -->
+<header class="sticky-top bg-white border-bottom shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light py-2">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-4 d-flex align-items-center gap-2" routerLink="/home">
+        <i class="bi bi-shield-shaded text-danger fs-2"></i>
+        <span><strong class="text-danger">KKK</strong> WHEEL CARE</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navAngularMenu" aria-controls="navAngularMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navAngularMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-1">
+          <li class="nav-item">
+            <a class="nav-link px-3" routerLink="/home" routerLinkActive="active text-danger fw-bold">
+              <i class="bi bi-house-door me-1"></i>Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3" routerLink="/products" routerLinkActive="active text-danger fw-bold">
+              <i class="bi bi-grid-3x3-gap me-1"></i>Products & Tyres
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3" routerLink="/bookings" routerLinkActive="active text-danger fw-bold">
+              <i class="bi bi-calendar-check me-1"></i>Book Service
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3" routerLink="/profile" routerLinkActive="active text-danger fw-bold">
+              <i class="bi bi-car-front me-1"></i>My Garage
+            </a>
+          </li>
+
+          <!-- Dynamic Auth Status -->
+          <ng-container *ngIf="currentUser$ | async as user; else guestNav">
+            <li class="nav-item dropdown ms-lg-2">
+              <button class="btn btn-outline-danger btn-sm dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown">
+                <i class="bi bi-person-circle"></i>{{ user.full_name }}
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" routerLink="/profile"><i class="bi bi-person me-2"></i>Customer Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><button class="dropdown-item text-danger" (click)="logout()"><i class="bi bi-box-arrow-right me-2"></i>Logout</button></li>
+              </ul>
+            </li>
+          </ng-container>
+
+          <ng-template #guestNav>
+            <li class="nav-item ms-lg-2">
+              <a routerLink="/login" class="btn btn-outline-dark btn-sm">Login</a>
+            </li>
+            <li class="nav-item ms-lg-2">
+              <a routerLink="/register" class="btn btn-danger btn-sm">Sign Up</a>
+            </li>
+          </ng-template>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Main Router Outlet for Angular Views -->
+<main class="min-vh-100 bg-light">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Shared Footer -->
+<footer class="bg-dark text-secondary py-4 border-top border-secondary">
+  <div class="container text-center small">
+    <div class="mb-2 text-white fw-bold">KKK WHEEL CARE & ALLIED CLEAN ENERGY</div>
+    <div class="mb-3">Precision Automotive Alignment, Certified Tyre Hub, Inverter & Auto Batteries, Solar Thermal Water Heaters & RO Purification.</div>
+    <div class="d-flex justify-content-center gap-3 mb-2 flex-wrap">
+      <a href="tel:+919845012345" class="text-secondary text-decoration-none"><i class="bi bi-telephone me-1"></i>+91 98450 12345</a>
+      <span class="d-none d-md-inline">•</span>
+      <a href="mailto:service@kkkwheelcare.com" class="text-secondary text-decoration-none"><i class="bi bi-envelope me-1"></i>service@kkkwheelcare.com</a>
+      <span class="d-none d-md-inline">•</span>
+      <span><i class="bi bi-geo-alt me-1"></i>KKK Complex, Opp. New Bus Stand, Main Road</span>
+    </div>
+    <div>&copy; 2026 KKK Wheel Care. Professional Automotive Care & Clean Energy Solutions. All rights reserved.</div>
+  </div>
+</footer>
